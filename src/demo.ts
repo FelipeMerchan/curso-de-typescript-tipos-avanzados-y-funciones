@@ -4,4 +4,4 @@ let userId: UserId;
 userId = 'string';
 userId = 2;
 
-console.log('Ts')
+console.log('Ts');
