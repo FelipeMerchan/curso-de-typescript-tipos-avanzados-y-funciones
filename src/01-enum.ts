@@ -10,13 +10,13 @@
   Podemos asignarle strings o números a cada opción del enum.
 */
 
-enum ROLES {
+export enum ROLES {
   ADMIN = "admin",
   SELLER = "seller",
   CUSTOMER = "customer",
 }
 
-type User = {
+export type User = {
   username: string;
   /* Al definir un enum en el tipo de una propiedad indica que
   lo que se asigne a la propiedad debe ser una de las opciones incluídas
