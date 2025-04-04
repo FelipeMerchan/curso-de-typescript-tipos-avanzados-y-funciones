@@ -4,6 +4,12 @@ import { Category } from "../categories/category.model";
 export type Sizes = 'S' | 'M' | 'L' | 'XL';
 export interface Product extends BaseModel {
   title: string;
+  image: string;
+  color: string;
+  price: number;
+  isNew: boolean;
+  tags: string[];
+  description: string;
   stock: number;
   size?: Sizes;
   /* Es una buena práctica que las partes que son anidadas, como

@@ -1,15 +1,27 @@
-import { addProduct } from "./products/products.service";
+import faker from '@faker-js/faker';
+import { addProduct, products } from "./products/products.service";
 
-addProduct({
-  createdAt: new Date(),
-  updatedAt: new Date(),
-  id: '1',
-  title: 'p1',
-  stock: 90,
-  category: {
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    id: '12',
-    name: 'c1',
-  }
-});
+for (let index = 0; index < 50; index++) {
+  addProduct({
+    createdAt: faker.date.recent(),
+    updatedAt: faker.date.recent(),
+    id: faker.datatype.uuid(),
+    title: faker.commerce.productName(),
+    stock: faker.datatype.number({ min: 10, max: 100 }),
+    category: {
+      createdAt: faker.date.recent(),
+      updatedAt: faker.date.recent(),
+      id: faker.datatype.uuid(),
+      name: faker.commerce.department(),
+    },
+    image: faker.image.imageUrl(),
+    color: faker.commerce.color(),
+    price: parseInt(faker.commerce.price(), 10),
+    isNew: faker.datatype.boolean(),
+    tags: faker.random.arrayElements(),
+    description: faker.commerce.productDescription(),
+    size: faker.random.arrayElement(['M', 'S', 'XL', 'L']),
+  });
+}
+
+console.log({ products });
