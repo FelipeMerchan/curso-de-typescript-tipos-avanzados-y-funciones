@@ -75,3 +75,24 @@ type example2 = {
 Partial deja todo como opcional y Required deja todo como obligatorio.
 */
 type example2 = Required<Product>;
+
+export interface FindProductDto extends Readonly<Partial<Product>> {}
+
+/* Readonly toma todos las propiedades de una interfaz y les aplica un
+readonly.
+Por ejemplo:
+type example3 = Readonly<Product>;
+Tendrá el siguiente tipo:
+
+type example3 = {
+    readonly title: string;
+    readonly image: string;
+    readonly color: string;
+    readonly price: number;
+    readonly isNew: boolean;
+    readonly tags: string[];
+    readonly description: string;
+    ... 5 more ...;
+    readonly updatedAt: Date;
+}
+ */

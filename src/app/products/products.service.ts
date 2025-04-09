@@ -1,5 +1,5 @@
 import { Product } from "./product.model";
-import { CreateProductDto, UpdateProductDto } from "./product.dto";
+import { CreateProductDto, FindProductDto, UpdateProductDto } from "./product.dto";
 import faker from "@faker-js/faker";
 
 export const products: Product[] = [];
@@ -37,4 +37,12 @@ export const updateProduct = (id: string, changes: UpdateProductDto): Product =>
   };
 
   return products[index];
+}
+
+export const findProducts = (dto: FindProductDto): Product[] => {
+  /* Como  FindProductDto aplica un readonly a todas las propiedades
+  no podemos modificar el parámetro:
+  dto.color = 'blue'; // Cannot assign to 'color' because it is a read-only property
+  */
+  return products;
 }
