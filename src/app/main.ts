@@ -3,17 +3,9 @@ import { addProduct, products } from "./products/products.service";
 
 for (let index = 0; index < 50; index++) {
   addProduct({
-    createdAt: faker.date.recent(),
-    updatedAt: faker.date.recent(),
-    id: faker.datatype.uuid(),
     title: faker.commerce.productName(),
     stock: faker.datatype.number({ min: 10, max: 100 }),
-    category: {
-      createdAt: faker.date.recent(),
-      updatedAt: faker.date.recent(),
-      id: faker.datatype.uuid(),
-      name: faker.commerce.department(),
-    },
+    categoryId: faker.datatype.uuid(),
     image: faker.image.imageUrl(),
     color: faker.commerce.color(),
     price: parseInt(faker.commerce.price(), 10),
