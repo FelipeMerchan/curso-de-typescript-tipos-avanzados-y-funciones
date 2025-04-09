@@ -28,7 +28,21 @@ export const addProduct = (data: CreateProductDto): Product => {
   return newProduct;
 }
 
-export const updateProduct = (id: string, changes: UpdateProductDto): Product => {
+/*
+  Podemos acceder al tipado por el índice, tal cual como lo hacemos
+  en JavaScript que podemos acceder a una propiedad usando la key:
+  product['id] y esto nos devolverá el valor de la propiedad id.
+  Podemos hacer lo mismo con los tipos:
+  Product['id'], esto nos devolverá el tipo de la propiedad id: (property) BaseModel.id: string.
+  Es útil en caso de que cambie el tipo de la propiedad y de esta forma
+  no tenemos que modificar todas las funciones como updateProduct donde recibíamos el parámetro id: string
+  (o cualquier propiedad de Product) porque ahora estamos leyendo el tipo desde la interfaz accediendo por el
+  índice.
+
+  Es interesante porque podemos reutilizar el tipado de ciertas interfaces
+  y obtenerlo por medio del índice para manipularlo o tenerlo en cualquier lado.
+*/
+export const updateProduct = (id: Product['id'], changes: UpdateProductDto): Product => {
   const index = products.findIndex((item) => item.id === id);
   const prevData = products[index];
   products[index] = {
