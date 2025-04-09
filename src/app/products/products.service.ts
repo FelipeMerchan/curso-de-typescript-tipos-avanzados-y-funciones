@@ -58,5 +58,9 @@ export const findProducts = (dto: FindProductDto): Product[] => {
   no podemos modificar el parámetro:
   dto.color = 'blue'; // Cannot assign to 'color' because it is a read-only property
   */
+ /* A FindProductDto le omitimos la propiedad tags para reescribirla con extends
+ para poder redefinir el tipo de tags a ReadonlyArray<string>, esto con el fin
+ de evitar que el array tags sea mutado. Ahora tenemos el siguiente error
+ si intetamos mutar el array dto.tags?.pop();: Property 'pop' does not exist on type 'readonly string[]' */
   return products;
 }

@@ -76,7 +76,9 @@ Partial deja todo como opcional y Required deja todo como obligatorio.
 */
 type example2 = Required<Product>;
 
-export interface FindProductDto extends Readonly<Partial<Product>> {}
+export interface FindProductDto extends Readonly<Partial<Omit<Product, 'tags'>>> {
+  readonly tags: ReadonlyArray<string>;
+}
 
 /* Readonly toma todos las propiedades de una interfaz y les aplica un
 readonly.
